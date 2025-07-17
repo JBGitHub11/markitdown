@@ -27,6 +27,8 @@ ACCEPTED_FILE_EXTENSIONS = [
     ".markdown",
     ".json",
     ".jsonl",
+    ".yml",
+    ".yaml",
 ]
 
 
