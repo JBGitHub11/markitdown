@@ -164,6 +164,28 @@ GENERAL_TEST_VECTORS = [
         must_not_include=[],
     ),
     FileTestVector(
+        filename="test.yaml",
+        mimetype="application/x-yaml",
+        charset="ascii",
+        url=None,
+        must_include=[
+            "12345678-1234-5678-1234-567812345678",
+            "87654321-4321-8765-4321-876543218765",
+        ],
+        must_not_include=[],
+    ),
+    FileTestVector(
+        filename="test.yml",
+        mimetype="application/x-yaml",
+        charset="ascii",
+        url=None,
+        must_include=[
+            "12345678-1234-5678-1234-567812345678",
+            "87654321-4321-8765-4321-876543218765",
+        ],
+        must_not_include=[],
+    ),
+    FileTestVector(
         filename="test_rss.xml",
         mimetype="text/xml",
         charset="utf-8",
