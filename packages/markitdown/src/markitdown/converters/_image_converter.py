@@ -8,9 +8,23 @@ from .._stream_info import StreamInfo
 ACCEPTED_MIME_TYPE_PREFIXES = [
     "image/jpeg",
     "image/png",
+    "image/gif",
+    "image/bmp",
+    "image/x-ms-bmp",
+    "image/tiff",
+    "image/svg+xml",
 ]
 
-ACCEPTED_FILE_EXTENSIONS = [".jpg", ".jpeg", ".png"]
+ACCEPTED_FILE_EXTENSIONS = [
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".gif",
+    ".bmp",
+    ".tif",
+    ".tiff",
+    ".svg",
+]
 
 
 class ImageConverter(DocumentConverter):

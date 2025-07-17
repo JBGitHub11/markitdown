@@ -13,6 +13,7 @@ from markitdown import (
     FileConversionException,
     StreamInfo,
 )
+from markitdown.converters import ImageConverter
 
 # This file contains module tests that are not directly tested by the FileTestVectors.
 # This includes things like helper functions and runtime conversion options
@@ -396,6 +397,29 @@ def test_markitdown_llm() -> None:
     validate_strings(result, PPTX_TEST_STRINGS)
 
 
+def test_image_converter_accepts_additional_formats() -> None:
+    converter = ImageConverter()
+    dummy = io.BytesIO(b"test")
+
+    for ext in [
+        ".gif",
+        ".bmp",
+        ".tif",
+        ".tiff",
+        ".svg",
+    ]:
+        assert converter.accepts(dummy, StreamInfo(extension=ext))
+
+    for mimetype in [
+        "image/gif",
+        "image/bmp",
+        "image/x-ms-bmp",
+        "image/tiff",
+        "image/svg+xml",
+    ]:
+        assert converter.accepts(dummy, StreamInfo(mimetype=mimetype))
+
+
 if __name__ == "__main__":
     """Runs this file's tests from the command line."""
     for test in [
@@ -409,6 +433,7 @@ if __name__ == "__main__":
         test_exceptions,
         test_markitdown_exiftool,
         test_markitdown_llm,
+        test_image_converter_accepts_additional_formats,
     ]:
         print(f"Running {test.__name__}...", end="")
         test()
